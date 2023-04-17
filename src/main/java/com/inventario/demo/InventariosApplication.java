@@ -10,4 +10,4 @@ public class InventariosApplication {
 		SpringApplication.run(InventariosApplication.class, args);
 	}
 
-}
+}//Prueba

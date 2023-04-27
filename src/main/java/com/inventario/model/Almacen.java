@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,11 +28,12 @@ public class Almacen {
     @Column(name="codigo")
     private String codigo;
 
-
+    @NotBlank(message = "Debe ingresar el nombre del almacen" )
 	@Column
     private String nombreAlmacen;
 
-
+    @NotBlank(message = "El teléfono es obligatorio")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Solo admite numeros ingrese 10 digitos")
 	@Column(name="telefono_almacen")
     private String telefonoAlmacen;
 

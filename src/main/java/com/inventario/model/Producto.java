@@ -38,6 +38,7 @@ public class Producto {
     private int precioCosto;
 
 
+
     @Column
     private boolean disponible;
 

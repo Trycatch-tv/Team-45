@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.inventario.model.Producto;
 import com.inventario.service.ProductoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Producto> crearProducto(@RequestBody  Producto producto) {
+	public ResponseEntity<Producto> crearProducto(@RequestBody @Valid Producto producto) {
 		try {
 			Producto productoCreado = productoService.crearProducto(producto);
 			return ResponseEntity.ok(productoCreado);
@@ -52,7 +53,7 @@ public class ProductoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Producto> editarProducto(@PathVariable Long id, @RequestBody Producto producto) {
+	public ResponseEntity<Producto> editarProducto(@PathVariable Long id, @RequestBody @Valid Producto producto) {
 		try {
 			Producto productoExistente = productoService.buscarProductoPorId(id);
 			

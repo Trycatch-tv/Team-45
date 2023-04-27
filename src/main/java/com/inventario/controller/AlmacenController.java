@@ -2,6 +2,7 @@ package com.inventario.controller;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,7 +41,7 @@ public class AlmacenController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Almacen> crearAlmacen(@RequestBody Almacen almacen) {
+	public ResponseEntity<Almacen> crearAlmacen(@RequestBody @Valid Almacen almacen) {
 		try {
 			Almacen almacenCreado = almacenService.crearAlmacen(almacen);
 			return ResponseEntity.ok(almacenCreado);
@@ -50,7 +51,7 @@ public class AlmacenController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Almacen> editarAlmacen(@PathVariable Long id, @RequestBody Almacen almacen) {
+	public ResponseEntity<Almacen> editarAlmacen(@PathVariable Long id, @RequestBody @Valid Almacen almacen) {
 		try {
 			Almacen almacenExistente = almacenService.buscarAlmacenPorId(id);
 			

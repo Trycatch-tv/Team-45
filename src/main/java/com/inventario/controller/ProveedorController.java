@@ -2,6 +2,7 @@ package com.inventario.controller;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -47,7 +48,7 @@ public class ProveedorController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Proveedor> crearProveedor(@RequestBody Proveedor proveedor) {
+    public ResponseEntity<Proveedor> crearProveedor(@RequestBody @Valid Proveedor proveedor) {
         try {
         	Proveedor proveedorCreado = proveedorService.crearProveedor(proveedor);
             return ResponseEntity.ok(proveedorCreado);
@@ -56,7 +57,7 @@ public class ProveedorController {
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Proveedor> editarProveedor(@PathVariable Long id, @RequestBody Proveedor proveedor) {
+    public ResponseEntity<Proveedor> editarProveedor(@PathVariable Long id, @RequestBody @Valid Proveedor proveedor) {
         try {
         	Proveedor proveedorExistente = proveedorService.buscarProveedorPorId(id);
 
@@ -71,9 +72,9 @@ public class ProveedorController {
 
             if (proveedor.getNombre()!= null &&!proveedor.getNombre().isEmpty())
                 proveedorExistente.setNombre(proveedor.getNombre());
-            
-            if (proveedor.getTelefono()!= null &&!proveedor.getTelefono().isEmpty())
-                proveedorExistente.setCiudad(proveedor.getTelefono());
+
+            proveedorExistente.setTelefono(proveedor.getTelefono());
+
             proveedorService.actualizarProveedor(proveedorExistente);
 
             return ResponseEntity.ok(proveedorExistente);

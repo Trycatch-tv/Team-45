@@ -2,6 +2,7 @@ package com.inventario.controller;
 
 import java.util.List;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,7 +41,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Categoria> crearCategoria(@RequestBody Categoria categoria) {
+	public ResponseEntity<Categoria> crearCategoria(@RequestBody @Valid Categoria categoria) {
 		try {
 			Categoria categoriaCreado = categoriaService.crearCategoria(categoria);
 			return ResponseEntity.ok(categoriaCreado);
@@ -50,7 +51,7 @@ public class CategoriaController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Categoria> editarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+	public ResponseEntity<Categoria> editarCategoria(@PathVariable Long id, @RequestBody @Valid Categoria categoria) {
 		try {
 			Categoria categoriaExistente = categoriaService.buscarCategoriaPorId(id);
 			

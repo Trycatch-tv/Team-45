@@ -22,12 +22,12 @@ public class CategoriaService {
 		return CategoriaRepository.findById(id).get();
 	}
 	
-	public Categoria crearCategoria(Categoria Categoria) {
-		return CategoriaRepository.save(Categoria);
+	public Categoria crearCategoria(Categoria categoria) {
+		return CategoriaRepository.save(categoria);
 	}
 	
-	public Categoria actualizarCategoria(Categoria Categoria) {
-		return CategoriaRepository.save(Categoria);
+	public Categoria actualizarCategoria(Categoria categoria) {
+		return CategoriaRepository.save(categoria);
 	}
 	
 	public void eliminarCategoria(Long id) {

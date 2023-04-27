@@ -5,6 +5,7 @@ com\inventario\repository\IAlmacenRepository.class
 com\inventario\repository\IProveedorRepository.class
 com\inventario\repository\ICategoriaRepository.class
 com\inventario\service\ProveedorService.class
+com\inventario\controller\CategoriaController.class
 com\inventario\controller\ProductoController.class
 com\inventario\service\AlmacenService.class
 com\inventario\service\ProductoService.class

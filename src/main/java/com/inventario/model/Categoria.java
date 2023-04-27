@@ -5,8 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Categoria {
 	
 	@Id
@@ -19,37 +25,5 @@ public class Categoria {
 	
 	@Column(name="Descripcion")
     private String descripcionCategoria;
-
-    public Long getCategoriaId() {
-        return categoriaId;
-    }
-
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
-    }
-
-    public String getNombreCategoria() {
-        return nombreCategoria;
-    }
-
-    public void setNombreCategoria(String nombreCategoria) {
-        this.nombreCategoria = nombreCategoria;
-    }
-
-    public String getCodigoCategoria() {
-        return codigoCategoria;
-    }
-
-    public void setCodigoCategoria(String codigoCategoria) {
-        this.codigoCategoria = codigoCategoria;
-    }
-
-    public String getDescripcionCategoria() {
-        return descripcionCategoria;
-    }
-
-    public void setDescripcionCategoria(String descripcionCategoria) {
-        this.descripcionCategoria = descripcionCategoria;
-    }
 
 }

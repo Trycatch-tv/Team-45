@@ -5,75 +5,47 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Proveedor {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotBlank(message = "Debe ingresar el documento" )
+	@Size(min = 5, max = 15,message = "Mínimo 5 numeros y máximo 15")
 	@Column
 	private String documento;
+
+	@NotBlank(message = "Debe ingresar en nombre completo" )
 	@Column
 	private String nombre;
+
+	@NotBlank(message = "Debe ingresar ela direccion" )
 	@Column
 	private String direccion;
+
+	@NotBlank(message = "Debe ingresar enla ciudad" )
 	@Column
 	private String ciudad ;
-	@Column
-	private String telefono;
-	public Proveedor(Long id, String documento, String nombre, String direccion, String ciudad, String telefono) {
-		this.id = id;
-		this.documento = documento;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.ciudad = ciudad;
-		this.telefono = telefono;
-	}
-	public Proveedor() {
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getDocumento() {
-		return documento;
-	}
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-	public String getCiudad() {
-		return ciudad;
-	}
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-	public String getTelefono() {
-		return telefono;
-	}
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-	@Override
-	public String toString() {
-		return "Proveedor [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", direccion=" + direccion
-				+ ", ciudad=" + ciudad + ", telefono=" + telefono + "]";
-	}
-	
-	
+
+	@NotBlank(message = "El teléfono es obligatorio")
+    @Min(value = 5, message = "Cantidad de numeros minimos es 5")
+    @Max(value = 10,message = "Maximo de numeros 10")
+//    @Pattern(regexp = "^[0-9]{1,2}$", message = "Solo númeeros")
+    @Column(name = "phone")
+    private int telefono;
+
 }

@@ -5,10 +5,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Almacen {
-	
+
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long almacenId;
@@ -19,36 +26,5 @@ public class Almacen {
 	@Column(name="Correo")
     private String emailAlmacen;
 
-    public Long getAlmacenId() {
-        return almacenId;
-    }
-
-    public void setAlmacenId(Long almacenId) {
-        this.almacenId = almacenId;
-    }
-
-    public String getNombreAlmacen() {
-        return nombreAlmacen;
-    }
-
-    public void setNombreAlmacen(String nombreAlmacen) {
-        this.nombreAlmacen = nombreAlmacen;
-    }
-
-    public String getTelefonoAlmacen() {
-        return telefonoAlmacen;
-    }
-
-    public void setTelefonoAlmacen(String telefonoAlmacen) {
-        this.telefonoAlmacen = telefonoAlmacen;
-    }
-
-    public String getEmailAlmacen() {
-        return emailAlmacen;
-    }
-
-    public void setEmailAlmacen(String emailAlmacen) {
-        this.emailAlmacen = emailAlmacen;
-    }
 
 }

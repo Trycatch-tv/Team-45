@@ -28,7 +28,7 @@ public class ProductoController {
 	private ProductoService productoService;
 
 	@GetMapping("/listar")
-	public ResponseEntity<List<Producto>> listarProductos() {
+	public ResponseEntity< List<Producto>> listarProductos() {
 		return ResponseEntity.ok(productoService.listarProducto());
 	}
 	
@@ -42,7 +42,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) {
+	public ResponseEntity<Producto> crearProducto(@RequestBody  Producto producto) {
 		try {
 			Producto productoCreado = productoService.crearProducto(producto);
 			return ResponseEntity.ok(productoCreado);

@@ -17,12 +17,17 @@ public class Categoria {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoriaId;
-    @Column(name="Codigo")
+    private Long id;
+
+
+    @Column(name="codigo_categoria")
     private String codigoCategoria;
+
+
 	@Column(name="Nombre")
     private String nombreCategoria;
-	
+
+
 	@Column(name="Descripcion")
     private String descripcionCategoria;
 

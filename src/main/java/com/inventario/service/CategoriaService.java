@@ -14,23 +14,28 @@ public class CategoriaService {
 	@Autowired
 	private ICategoriaRepository CategoriaRepository;
 	
-	public List<Categoria> listarCategoriaes() {
+	public List<Categoria> listarCategorias() {
+
 		return CategoriaRepository.findAll();
 	}
 	
 	public Categoria buscarCategoriaPorId(Long id) {
+
 		return CategoriaRepository.findById(id).get();
 	}
 	
 	public Categoria crearCategoria(Categoria categoria) {
+
 		return CategoriaRepository.save(categoria);
 	}
 	
 	public Categoria actualizarCategoria(Categoria categoria) {
+
 		return CategoriaRepository.save(categoria);
 	}
 	
 	public void eliminarCategoria(Long id) {
+
 		CategoriaRepository.deleteById(id);
 	}
 	

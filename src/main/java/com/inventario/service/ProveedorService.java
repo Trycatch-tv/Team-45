@@ -10,9 +10,13 @@ import com.inventario.repository.IProveedorRepository;
 @Service
 public class ProveedorService {
 	
+	private final IProveedorRepository proveedorRepository;
+
 	@Autowired
-	private IProveedorRepository proveedorRepository;
-	
+	public ProveedorService(IProveedorRepository proveedorRepository) {
+		this.proveedorRepository = proveedorRepository;
+	}
+
 	public List<Proveedor> listarProveedores() {
 		return proveedorRepository.findAll();
 	}

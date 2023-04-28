@@ -25,8 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/producto")
 public class ProductoController {
 	
+	private final ProductoService productoService;
+
 	@Autowired
-	private ProductoService productoService;
+	public ProductoController(ProductoService productoService) {
+		this.productoService = productoService;
+	}
 
 	@GetMapping("/listar")
 	public ResponseEntity< List<Producto>> listarProductos() {

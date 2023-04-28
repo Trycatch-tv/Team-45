@@ -23,8 +23,12 @@ import com.inventario.service.AlmacenService;
 @RequestMapping("/api/almacen")
 public class AlmacenController {
 	
+	private final AlmacenService almacenService;
+
 	@Autowired
-	private AlmacenService almacenService;
+	public AlmacenController(AlmacenService almacenService) {
+		this.almacenService = almacenService;
+	}
 
 	@GetMapping("/")
 	public ResponseEntity<List<Almacen>> listarAlmacenes() {

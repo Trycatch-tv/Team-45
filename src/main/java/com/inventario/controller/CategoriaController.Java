@@ -23,8 +23,12 @@ import com.inventario.service.CategoriaService;
 @RequestMapping("/api/Categoria")
 public class CategoriaController {
 	
+	private final CategoriaService categoriaService;
+
 	@Autowired
-	private CategoriaService categoriaService;
+	public CategoriaController(CategoriaService categoriaService) {
+		this.categoriaService = categoriaService;
+	}
 
 	@GetMapping("/")
 	public ResponseEntity<List<Categoria>> listarCategorias() {

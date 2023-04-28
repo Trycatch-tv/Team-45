@@ -27,9 +27,13 @@ import com.inventario.service.ProveedorService;
 public class ProveedorController {
 
 	
-	@Autowired
-	private ProveedorService proveedorService;
-	
+	private final ProveedorService proveedorService;
+
+    @Autowired
+    public ProveedorController(ProveedorService proveedorService) {
+        this.proveedorService = proveedorService;
+    }
+
 
     @GetMapping("/")
     public ResponseEntity<List<Proveedor>> listarProveedor() {

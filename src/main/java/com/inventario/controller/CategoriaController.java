@@ -19,7 +19,7 @@ import com.inventario.model.Categoria;
 import com.inventario.service.CategoriaService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/categoria")
 public class CategoriaController {
 	
@@ -30,7 +30,7 @@ public class CategoriaController {
 		this.categoriaService = categoriaService;
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<List<Categoria>> listarCategorias() {
 		return ResponseEntity.ok(categoriaService.listarCategorias());
 	}
@@ -44,7 +44,7 @@ public class CategoriaController {
 		}
 	}
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<Categoria> crearCategoria(@RequestBody @Valid Categoria categoria) {
 		try {
 			Categoria categoriaCreado = categoriaService.crearCategoria(categoria);

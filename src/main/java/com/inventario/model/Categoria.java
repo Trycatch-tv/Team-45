@@ -1,17 +1,17 @@
 package com.inventario.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
+@Table(name = "categoria")
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Categoria {
@@ -32,4 +32,22 @@ public class Categoria {
 	@Column(name="Descripcion")
     private String descripcionCategoria;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Categoria categoria = (Categoria) o;
+
+        return new EqualsBuilder().append(id, categoria.id).append(codigoCategoria, categoria.codigoCategoria)
+                .append(nombreCategoria, categoria.nombreCategoria)
+                .append(descripcionCategoria, categoria.descripcionCategoria).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37).append(id).append(codigoCategoria)
+                .append(nombreCategoria).append(descripcionCategoria).toHashCode();
+    }
 }

@@ -1,6 +1,7 @@
 package com.inventario.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,18 @@ import com.inventario.model.Almacen;
 import com.inventario.service.AlmacenService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/almacen")
 public class AlmacenController {
 	
-	@Autowired
-	private AlmacenService almacenService;
+	private final AlmacenService almacenService;
 
-	@GetMapping("/")
+	@Autowired
+	public AlmacenController(AlmacenService almacenService) {
+		this.almacenService = almacenService;
+	}
+
+	@GetMapping
 	public ResponseEntity<List<Almacen>> listarAlmacenes() {
 		return ResponseEntity.ok(almacenService.listarAlmacenes());
 	}
@@ -40,7 +45,7 @@ public class AlmacenController {
 		}
 	}
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<Almacen> crearAlmacen(@RequestBody @Valid Almacen almacen) {
 		try {
 			Almacen almacenCreado = almacenService.crearAlmacen(almacen);

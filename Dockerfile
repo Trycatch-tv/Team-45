@@ -5,7 +5,7 @@ RUN mvn -f /home/app/pom.xml clean package
 
 FROM amazoncorretto:17
 EXPOSE 8080
-COPY --from=build /home/app/target/Rest-0.0.1-SNAPSHOT.jar /usr/local/lib/inventario-app.jar
+COPY --from=build /home/app/target/inventario-*.jar /usr/local/lib/inventario-app.jar
 COPY start.sh start.sh
 RUN chmod +x start.sh
 ENTRYPOINT ["./start.sh"]

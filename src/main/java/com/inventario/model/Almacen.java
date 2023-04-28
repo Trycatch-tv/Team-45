@@ -1,23 +1,21 @@
 package com.inventario.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Data
-@AllArgsConstructor
+@Table(name = "almacen")
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Almacen {
-
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +39,22 @@ public class Almacen {
 	@Column(name="correo")
     private String emailAlmacen;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
 
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Almacen almacen = (Almacen) o;
+
+        return new EqualsBuilder().append(id, almacen.id).append(codigo, almacen.codigo)
+                .append(nombreAlmacen, almacen.nombreAlmacen).append(telefonoAlmacen, almacen.telefonoAlmacen)
+                .append(emailAlmacen, almacen.emailAlmacen).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37).append(id).append(codigo)
+                .append(nombreAlmacen).append(telefonoAlmacen).append(emailAlmacen).toHashCode();
+    }
 }

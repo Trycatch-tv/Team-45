@@ -19,14 +19,18 @@ import com.inventario.model.Categoria;
 import com.inventario.service.CategoriaService;
 
 @RestController
-@CrossOrigin
-@RequestMapping("/api/Categoria")
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/categoria")
 public class CategoriaController {
 	
-	@Autowired
-	private CategoriaService categoriaService;
+	private final CategoriaService categoriaService;
 
-	@GetMapping("/")
+	@Autowired
+	public CategoriaController(CategoriaService categoriaService) {
+		this.categoriaService = categoriaService;
+	}
+
+	@GetMapping
 	public ResponseEntity<List<Categoria>> listarCategorias() {
 		return ResponseEntity.ok(categoriaService.listarCategorias());
 	}
@@ -40,7 +44,7 @@ public class CategoriaController {
 		}
 	}
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<Categoria> crearCategoria(@RequestBody @Valid Categoria categoria) {
 		try {
 			Categoria categoriaCreado = categoriaService.crearCategoria(categoria);

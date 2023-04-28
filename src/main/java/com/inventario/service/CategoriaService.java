@@ -11,32 +11,36 @@ import com.inventario.repository.ICategoriaRepository;
 @Service
 public class CategoriaService {
 	
+	private final ICategoriaRepository categoriaRepository;
+
 	@Autowired
-	private ICategoriaRepository CategoriaRepository;
-	
+	public CategoriaService(ICategoriaRepository categoriaRepository) {
+		this.categoriaRepository = categoriaRepository;
+	}
+
 	public List<Categoria> listarCategorias() {
 
-		return CategoriaRepository.findAll();
+		return categoriaRepository.findAll();
 	}
 	
 	public Categoria buscarCategoriaPorId(Long id) {
 
-		return CategoriaRepository.findById(id).get();
+		return categoriaRepository.findById(id).get();
 	}
 	
 	public Categoria crearCategoria(Categoria categoria) {
 
-		return CategoriaRepository.save(categoria);
+		return categoriaRepository.save(categoria);
 	}
 	
 	public Categoria actualizarCategoria(Categoria categoria) {
 
-		return CategoriaRepository.save(categoria);
+		return categoriaRepository.save(categoria);
 	}
 	
 	public void eliminarCategoria(Long id) {
 
-		CategoriaRepository.deleteById(id);
+		categoriaRepository.deleteById(id);
 	}
 	
 }

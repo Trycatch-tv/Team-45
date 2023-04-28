@@ -21,14 +21,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/producto")
 public class ProductoController {
 	
-	@Autowired
-	private ProductoService productoService;
+	private final ProductoService productoService;
 
-	@GetMapping("/listar")
+	@Autowired
+	public ProductoController(ProductoService productoService) {
+		this.productoService = productoService;
+	}
+
+	@GetMapping
 	public ResponseEntity< List<Producto>> listarProductos() {
 		return ResponseEntity.ok(productoService.listarProducto());
 	}
@@ -42,7 +46,7 @@ public class ProductoController {
 		}
 	}
 	
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<Producto> crearProducto(@RequestBody @Valid Producto producto) {
 		try {
 			Producto productoCreado = productoService.crearProducto(producto);

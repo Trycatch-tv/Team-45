@@ -1,17 +1,16 @@
 package com.inventario.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Data
+@Table(name = "proveedor")
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Proveedor {
@@ -45,4 +44,22 @@ public class Proveedor {
     @Column(name = "phone")
     private int telefono;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Proveedor proveedor = (Proveedor) o;
+
+		return new EqualsBuilder().append(telefono, proveedor.telefono).append(id, proveedor.id)
+				.append(documento, proveedor.documento).append(nombre, proveedor.nombre)
+				.append(direccion, proveedor.direccion).append(ciudad, proveedor.ciudad).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37).append(id).append(documento)
+				.append(nombre).append(direccion).append(ciudad).append(telefono).toHashCode();
+	}
 }

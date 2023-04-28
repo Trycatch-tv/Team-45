@@ -11,9 +11,13 @@ import com.inventario.repository.IAlmacenRepository;
 @Service
 public class AlmacenService {
 	
+	private final IAlmacenRepository almacenRepository;
+
 	@Autowired
-	private IAlmacenRepository almacenRepository;
-	
+	public AlmacenService(IAlmacenRepository almacenRepository) {
+		this.almacenRepository = almacenRepository;
+	}
+
 	public List<Almacen> listarAlmacenes() {
 		return almacenRepository.findAll();
 	}

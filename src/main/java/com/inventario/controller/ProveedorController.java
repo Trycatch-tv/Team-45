@@ -22,16 +22,20 @@ import com.inventario.service.ProveedorService;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/proveedor")
 public class ProveedorController {
 
 	
-	@Autowired
-	private ProveedorService proveedorService;
-	
+	private final ProveedorService proveedorService;
 
-    @GetMapping("/")
+    @Autowired
+    public ProveedorController(ProveedorService proveedorService) {
+        this.proveedorService = proveedorService;
+    }
+
+
+    @GetMapping
     public ResponseEntity<List<Proveedor>> listarProveedor() {
         return ResponseEntity.ok(proveedorService.listarProveedores());
     }
@@ -47,7 +51,7 @@ public class ProveedorController {
 
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Proveedor> crearProveedor(@RequestBody @Valid Proveedor proveedor) {
         try {
         	Proveedor proveedorCreado = proveedorService.crearProveedor(proveedor);

@@ -1,19 +1,16 @@
 package com.inventario.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Table
 public class Proveedor {
 
 	
@@ -42,7 +39,7 @@ public class Proveedor {
     @Min(value = 5, message = "Cantidad de numeros minimos es 5")
     @Max(value = 10,message = "Maximo de numeros 10")
 //    @Pattern(regexp = "^[0-9]{1,2}$", message = "Solo númeeros")
-    @Column(name = "phone")
+    @Column
     private int telefono;
 
 }

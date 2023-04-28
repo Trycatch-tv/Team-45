@@ -6,7 +6,6 @@ import com.inventario.model.Producto;
 import com.inventario.service.ProductoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,8 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/producto")
 public class ProductoController {
 	
-	@Autowired
-	private ProductoService productoService;
+
+	private final ProductoService productoService;
+
+	public ProductoController(ProductoService productoService){
+		this.productoService=productoService;
+	}
 
 	@GetMapping("/listar")
 	public ResponseEntity< List<Producto>> listarProductos() {
@@ -63,8 +66,8 @@ public class ProductoController {
 			if (producto.getDescripcion() != null && !producto.getDescripcion().isEmpty())
 				productoExistente.setDescripcion(producto.getDescripcion());
 
-			productoExistente.setPrecioCosto(producto.getPrecioCosto());
-			productoExistente.setPrecioVenta(producto.getPrecioVenta());
+			productoExistente.setPreciocosto(producto.getPreciocosto());
+			productoExistente.setPrecioventa(producto.getPrecioventa());
 			productoExistente.setDisponible(producto.isDisponible());
 
 

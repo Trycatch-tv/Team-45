@@ -20,7 +20,7 @@ import com.inventario.service.CategoriaService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/Categoria")
+@RequestMapping("/api/categoria")
 public class CategoriaController {
 	
 	private final CategoriaService categoriaService;

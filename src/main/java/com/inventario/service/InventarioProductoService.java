@@ -3,9 +3,10 @@ package com.inventario.service;
 import com.inventario.model.InventarioProducto;
 import com.inventario.repository.IInventarioProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class InventarioProductoService {
 
     @Autowired

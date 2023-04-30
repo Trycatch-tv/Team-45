@@ -43,8 +43,6 @@ public class Inventario {
     @Pattern(regexp = "^[0-9]{1,10}$", message = "Son acepta numeros")
     private String total;
 
-    @Column
-    private int entero;
 
 
 

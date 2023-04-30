@@ -1,5 +1,6 @@
 package com.inventario.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.inventario.model.Inventario;
 import com.inventario.service.InventarioService;
 import jakarta.validation.Valid;
@@ -20,9 +21,11 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/api/inventario")
 public class InventarioController {
+
     private final InventarioService inventarioServicio;
 
     public InventarioController (InventarioService inventarioServicio){
+
         this.inventarioServicio=inventarioServicio;
     }
     @GetMapping("/")
@@ -39,10 +42,12 @@ public class InventarioController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/crear")
     public ResponseEntity<Inventario> crearInventario(@RequestBody @Valid Inventario inventario) {
+
         try {
             Inventario inventarioCreado = inventarioServicio.crearInventario(inventario);
+
             return ResponseEntity.ok(inventarioCreado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -58,14 +63,13 @@ public class InventarioController {
                 inventarioExistente.setNombre(inventario.getNombre());
 
             if (inventario.getFechaApertura() != null)
-                inventarioExistente.setFechaApertura(inventario.getFechaApertura());
+               inventarioExistente.setFechaApertura(inventario.getFechaApertura());
 
             if (inventario.getFechaCierre() != null )
                 inventarioExistente.setFechaCierre(inventario.getFechaCierre());
-            if (inventario.getTotal() != null && !inventario.getTotal().isNaN())
+            if (inventario.getTotal() != null && !inventario.getTotal().isEmpty())
                 inventarioExistente.setTotal(inventario.getTotal());
-            if (inventario.getAlmacenId() != null && !inventario.getAlmacenId().isEmpty())
-                inventarioExistente.setAlmacenId(inventario.getAlmacenId());
+
 
             inventarioServicio.actualizarInventario(inventarioExistente);
 

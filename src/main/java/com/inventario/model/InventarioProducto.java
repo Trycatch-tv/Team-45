@@ -30,5 +30,5 @@ public class InventarioProducto {
     private Double precio;
 
     @Column
-    private Integer cantidad;
+    private int cantidad;
 }

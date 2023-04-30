@@ -3,6 +3,7 @@ package com.inventario.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 @Entity
@@ -26,15 +27,15 @@ public class Producto {
 	@Column
     private String descripcion;
 
-    @NotEmpty(message = "Debe ingresar el precio de venta" )
+    @NotBlank(message = "El precio de venta es obligatorio")
+    @Pattern(regexp = "^[0-9]{1,10}$", message = "Son acepta numeros")
 	@Column
-    private int precioventa;
+    private String precioventa;
 
-    @NotEmpty(message = "Debe ingresar el precio de costo" )
+    @NotBlank(message = "El precio de costo es obligatorio")
+    @Pattern(regexp = "^[0-9]{1,10}$", message = "Son acepta numeros")
     @Column
-    private int preciocosto;
-
-
+    private String preciocosto;
 
     @Column
     private boolean disponible;

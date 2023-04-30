@@ -36,10 +36,9 @@ public class Proveedor {
 	private String ciudad ;
 
 	@NotNull(message = "El teléfono es obligatorio")
-    @Min(value = 5, message = "Cantidad de numeros minimos es 5")
-    @Max(value = 10,message = "Maximo de numeros 10")
-//    @Pattern(regexp = "^[0-9]{1,2}$", message = "Solo númeeros")
+
+	@Pattern(regexp = "^[0-9]{1,10}$", message = "Solo númeeros")
     @Column
-    private int telefono;
+    private String telefono;
 
 }

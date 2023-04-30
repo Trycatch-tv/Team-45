@@ -31,7 +31,7 @@ public class Almacen {
     private String nombre;
 
     @NotBlank(message = "El teléfono es obligatorio")
-    @Pattern(regexp = "^[0-9]{10}$", message = "Solo admite numeros ingrese 10 digitos")
+    @Pattern(regexp = "^[0-9]{5,10}$", message = "Solo admite numeros ingrese 10 digitos")
 	@Column
     private String telefono;
 

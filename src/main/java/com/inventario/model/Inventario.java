@@ -5,7 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -30,16 +32,20 @@ public class Inventario {
     @Column
     private String nombre;
 
-   @Column
-    private Date   FechaApertura;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+   @Column(name = "fecha_apertura")
+   private LocalDate  fechaApertura;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Column (name = "fecha_cierre")
+    private LocalDate fechaCierre;
 
     @Column
-    private Date FechaCierre;
+    @Pattern(regexp = "^[0-9]{1,10}$", message = "Son acepta numeros")
+    private String total;
 
     @Column
-    private Double Total;
+    private int entero;
 
-    @Column
-    private String AlmacenId;
+
 
 }

@@ -1,6 +1,6 @@
 package com.inventario.repository;
 
-import com.inventario.model.Almacen;
+
 import com.inventario.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

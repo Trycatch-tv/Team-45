@@ -55,7 +55,7 @@ public class AlmacenController {
 		try {
 			Almacen almacenExistente = almacenService.buscarAlmacenPorId(id);
 			
-			if (almacen.getNombreAlmacen() != null && !almacen.getNombreAlmacen().isEmpty())
+			if (almacen.getNombreAlmacen() != null && !almacen.getEmailAlmacen().isEmpty())
 				almacenExistente.setNombreAlmacen(almacen.getNombreAlmacen());
 			
 			if (almacen.getTelefonoAlmacen() != null && !almacen.getTelefonoAlmacen().isEmpty())

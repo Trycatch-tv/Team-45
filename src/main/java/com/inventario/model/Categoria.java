@@ -22,14 +22,14 @@ public class Categoria {
 
     @NotBlank(message = "Debe ingresar el codigo" )
     @Size(min = 5, max = 10,message = "Mínimo 5 numeros y máximo 10")
-    @Column(name="codigo_categoria")
-    private String codigoCategoria;
+    @Column
+    private String codigo;
 
     @NotBlank(message = "Debe ingresar el nombre de la categoria" )
-	@Column(name="Nombre")
-    private String nombreCategoria;
+	@Column
+    private String nombre;
 
-	@Column(name="Descripcion")
-    private String descripcionCategoria;
+	@Column
+    private String descripcion;
 
 }

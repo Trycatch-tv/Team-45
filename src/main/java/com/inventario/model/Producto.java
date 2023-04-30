@@ -7,12 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Producto {
@@ -23,19 +22,19 @@ public class Producto {
     private Long id;
 
     @NotBlank(message = "Debe ingresar el nombre" )
-	@Column(name="Nombre")
+	@Column
     private String nombre;
 
 	@Column
     private String descripcion;
 
     @NotEmpty(message = "Debe ingresar el precio de venta" )
-	@Column(name="precio_venta")
-    private int precioVenta;
+	@Column
+    private int precioventa;
 
     @NotEmpty(message = "Debe ingresar el precio de costo" )
-    @Column(name="precio_costo")
-    private int precioCosto;
+    @Column
+    private int preciocosto;
 
 
 

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class InventarioApplication {
-
+/*Developer Andres Casas github= IngAndresCasas*/
 	public static void main(String[] args) {
 
 		SpringApplication.run(InventarioApplication.class, args);

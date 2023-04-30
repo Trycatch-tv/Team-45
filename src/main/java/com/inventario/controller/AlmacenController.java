@@ -22,10 +22,14 @@ import com.inventario.service.AlmacenService;
 @CrossOrigin
 @RequestMapping("/api/almacen")
 public class AlmacenController {
-	
-	@Autowired
-	private AlmacenService almacenService;
 
+
+	//@Autowired
+	private final AlmacenService almacenService;
+
+	public AlmacenController ( AlmacenService almacenService){
+		this.almacenService = almacenService;
+	}
 	@GetMapping("/")
 	public ResponseEntity<List<Almacen>> listarAlmacenes() {
 		return ResponseEntity.ok(almacenService.listarAlmacenes());
@@ -55,14 +59,14 @@ public class AlmacenController {
 		try {
 			Almacen almacenExistente = almacenService.buscarAlmacenPorId(id);
 			
-			if (almacen.getNombreAlmacen() != null && !almacen.getEmailAlmacen().isEmpty())
-				almacenExistente.setNombreAlmacen(almacen.getNombreAlmacen());
+			if (almacen.getNombre() != null && !almacen.getNombre().isEmpty())
+				almacenExistente.setNombre(almacen.getNombre());
 			
-			if (almacen.getTelefonoAlmacen() != null && !almacen.getTelefonoAlmacen().isEmpty())
-				almacenExistente.setTelefonoAlmacen(almacen.getTelefonoAlmacen());
+			if (almacen.getTelefono() != null && !almacen.getTelefono().isEmpty())
+				almacenExistente.setTelefono(almacen.getTelefono());
 			
-			if (almacen.getEmailAlmacen() != null && !almacen.getEmailAlmacen().isEmpty())
-				almacenExistente.setEmailAlmacen(almacen.getEmailAlmacen());
+			if (almacen.getEmail() != null && !almacen.getEmail().isEmpty())
+				almacenExistente.setEmail(almacen.getEmail());
 			
 			almacenService.actualizarAlmacen(almacenExistente);
 			
